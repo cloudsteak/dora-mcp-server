@@ -1,9 +1,12 @@
 # DORA MCP server
 
-This repository contains the source code for the DORA MCP (Model Context Protocol) server. The DORA MCP server is designed to facilitate communication and data exchange between different components of the DORA system using the MCP protocol. 
+This repository contains the source code for the DORA MCP (Model Context Protocol) server. The DORA MCP server is designed to facilitate communication and data exchange between different components of the DORA system using the MCP protocol.
 
+## DORA: Documentation Orchestration & Review Assistant
 
-## DORA MCP based architecture 
+**Tag line:** Your intelligent partner in documentation.
+
+## DORA MCP based architecture
 
 This sequence diagram illustrates the interaction flow between a user, a large language model (LLM), a DORA Agent (acting as an MCP client), and the MCP Server (implemented with FastAPI):
 
@@ -33,8 +36,6 @@ sequenceDiagram
     A-->>L: Tool result passed back
     L-->>U: Final natural language answer
 ```
-
-
 
 ## DORA system architecture
 
@@ -84,9 +85,9 @@ The backend is the **intelligence and orchestration core** of the system.
   - conversation management,
   - MCP client logic.
 - When the LLM requests a tool call, the backend:
-  1. translates the request into an MCP tool-call,  
-  2. sends it to the MCP server,  
-  3. receives the tool result,  
+  1. translates the request into an MCP tool-call,
+  2. sends it to the MCP server,
+  3. receives the tool result,
   4. returns it to the LLM.
 
 ##### Deployment characteristics
@@ -121,12 +122,12 @@ Agents are the **task-specific worker services**, each responsible for a special
 
 #### Examples
 
-- Mermaid diagram generator  
-- Documentation writer  
-- Code analyzer  
-- Log summarizer  
-- Security scanner  
-- Any custom domain-specific microservice  
+- Mermaid diagram generator
+- Documentation writer
+- Code analyzer
+- Log summarizer
+- Security scanner
+- Any custom domain-specific microservice
 
 #### Responsibilities
 
@@ -137,9 +138,9 @@ Agents are the **task-specific worker services**, each responsible for a special
 
 - Each agent runs as a **separate Deployment + ClusterIP Service**.
 - Agents are **internal only**:
-  - No Ingress  
-  - Not reachable from the internet  
-  - Not accessible by the user  
+  - No Ingress
+  - Not reachable from the internet
+  - Not accessible by the user
 - Only the **MCP server** can call them using the Kubernetes internal network.  
   Example:  
   `http://mermaid-agent.agents.svc.cluster.local`
@@ -155,7 +156,6 @@ This makes agents isolated, secure, and horizontally scalable.
 ### Mermaid Flowchart
 
 Below is the validated, parentheses-free, line-break-free, fully working Mermaid flowchart that matches the architecture:
-
 
 ```mermaid
 flowchart LR
@@ -182,7 +182,6 @@ flowchart LR
     M -->|Tool result| B
     B --> UI
 ```
-
 
 ## Other DORA components
 
