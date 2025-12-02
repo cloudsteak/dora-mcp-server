@@ -6,6 +6,11 @@ This repository contains the source code for the DORA MCP (Model Context Protoco
 
 **Tag line:** Your intelligent partner in documentation.
 
+## Other DORA components
+
+- Basic DORA solution with LLM integration: https://github.com/cloudsteak/dora
+
+
 ## DORA MCP based architecture
 
 This sequence diagram illustrates the interaction flow between a user, a large language model (LLM), a DORA Agent (acting as an MCP client), and the MCP Server (implemented with FastAPI):
@@ -183,6 +188,3 @@ flowchart LR
     B --> UI
 ```
 
-## Other DORA components
-
-- Basic DORA solution with LLM integration: https://github.com/cloudsteak/dora
