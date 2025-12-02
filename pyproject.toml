@@ -1,31 +1,25 @@
+
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 
 [project]
 name = "dora-mcp-server"
 version = "0.1.0"
-description = "DORA metrics MCP server for DevOps Research and Assessment"
+description = "Minimal MCP server for DORA agents (FastAPI-based)"
 readme = "README.md"
 license = "Apache-2.0"
-requires-python = ">=3.10"
+requires-python = ">=3.13"
 authors = [
     {name = "cloudsteak"}
 ]
-classifiers = [
-    "Development Status :: 3 - Alpha",
-    "Intended Audience :: Developers",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-]
 dependencies = [
-    "mcp>=1.0.0",
+    "fastapi==0.115.0",
+    "uvicorn[standard]==0.30.0",
 ]
 
-[project.scripts]
-dora-mcp-server = "mcp_server:main"
+[tool.hatch.build.targets.wheel]
+packages = ["mcp_server"]
 
-[tool.setuptools]
-py-modules = ["mcp_server"]
+[tool.uv]

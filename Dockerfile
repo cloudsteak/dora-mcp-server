@@ -1,13 +1,17 @@
-FROM python:3.12-slim
+FROM python:3.13-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-COPY pyproject.toml .
-COPY mcp_server.py .
-COPY README.md .
+RUN pip install --no-cache-dir uv
 
-RUN pip install --no-cache-dir .
+# pyproject + lock + README (HATCHNEK KELL!)
+COPY pyproject.toml uv.lock README.md ./
+RUN uv sync --frozen
 
-EXPOSE 8000
+# app kód
+COPY mcp_server ./mcp_server
 
-CMD ["dora-mcp-server"]
+CMD ["uv", "run", "uvicorn", "mcp_server.mcp_server:app", "--host", "0.0.0.0", "--port", "8000"]
