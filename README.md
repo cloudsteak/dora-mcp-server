@@ -182,3 +182,8 @@ flowchart LR
     M -->|Tool result| B
     B --> UI
 ```
+
+
+## Other DORA components
+
+- Basic DORA solution with LLM integration: https://github.com/cloudsteak/dora
