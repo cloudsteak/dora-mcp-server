@@ -230,11 +230,11 @@ def get_dora_summary(
     else:
         metrics["lead_time_for_changes"] = {"level": "Low", "score": 1}
 
-    # Change Failure Rate
+    # Change Failure Rate (DORA combines Elite/High as 0-15%)
     if change_failure_rate_percent <= 15:
         metrics["change_failure_rate"] = {"level": "Elite/High", "score": 4}
     elif change_failure_rate_percent <= 30:
-        metrics["change_failure_rate"] = {"level": "Medium", "score": 2}
+        metrics["change_failure_rate"] = {"level": "Medium", "score": 3}
     else:
         metrics["change_failure_rate"] = {"level": "Low", "score": 1}
 
